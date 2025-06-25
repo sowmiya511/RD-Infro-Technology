@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Bloom | Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <h2>🌸 Create Your Account</h2>
+            <p>Join and let your habits bloom!</p>
+
+            <form id="signupForm" onsubmit="return validateForm()">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name">
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Create a password">
+
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Re-enter password">
+
+                <button type="submit" class="btn primary">Sign Up</button>
+            </form>
+
+            <p class="login-link">Already have an account? <a href="#">Log in</a></p>
+        </div>
+    </div>
+
+<script>
+    function validateForm() {
+        const name = document.getElementById('name').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const confirmPassword = document.getElementById('confirm-password').value.trim();
+
+        if (name === '' || email === '' || password === '' || confirmPassword === '') {
+            alert('Please fill in all fields.');
+            return false;
+        }
+
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+        if (!email.match(emailPattern)) {
+            alert('Please enter a valid email address.');
+            return false;
+        }
+
+        if (password.length < 6) {
+            alert('Password must be at least 6 characters.');
+            return false;
+        }
+
+        if (password !== confirmPassword) {
+            alert('Passwords do not match.');
+            return false;
+        }
+
+        alert('Signup successful! 🌸');
+        return true;
+    }
+</script>
+
+</body>
+</html>

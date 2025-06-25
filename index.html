@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Bloom | Let Your Habits Bloom</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Byte Bloom</h1>
+            <nav>
+                <ul>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#get-started" class="btn">Get Started</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h2>Grow Better, One Habit at a Time.</h2>
+            <p>Track. Bloom. Thrive.</p>
+            <div class="buttons">
+                <a href="#" class="btn primary">Get Started</a>
+                <a href="#" class="btn secondary">Download App</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how" class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>🌱 Plant the Seed</h3>
+                    <p>Set your goals and habits.</p>
+                </div>
+                <div class="step">
+                    <h3>💧 Nurture</h3>
+                    <p>Check in daily and stay consistent.</p>
+                </div>
+                <div class="step">
+                    <h3>🌸 Bloom</h3>
+                    <p>Watch your garden grow with every habit.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="feature-list">
+                <div class="feature">
+                    <h3>✅ Daily Check-ins</h3>
+                    <p>Simple and easy habit tracking.</p>
+                </div>
+                <div class="feature">
+                    <h3>🌸 Visual Progress</h3>
+                    <p>Your habits grow into flowers over time.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔔 Reminders</h3>
+                    <p>Stay motivated with gentle reminders.</p>
+                </div>
+                <div class="feature">
+                    <h3>📈 Weekly Summary</h3>
+                    <p>See your progress as a blooming garden.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="testimonial-cards">
+                <div class="card">
+                    <p>“Seeing my habits bloom keeps me so motivated!”</p>
+                    <h4>– Aanya</h4>
+                </div>
+                <div class="card">
+                    <p>“It’s the most calming habit tracker ever.”</p>
+                    <h4>– Rahul</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="get-started">
+        <div class="container">
+            <h2>Ready to Bloom?</h2>
+            <a href="#" class="btn primary">Start Your Journey</a>
+            <p class="footer-links">
+                <a href="#">About</a> | 
+                <a href="#">Privacy</a> | 
+                <a href="#">Contact</a>
+            </p>
+            <p class="copyright">© 2025 Byte Bloom</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+
+
+
+<!--this is for the 3rd task to modify the navigation bar for mobile and desktop-->
+
+<header>
+  <div class="container">
+    <h1>Byte Bloom</h1>
+    <nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="signup.html" class="btn">Sign Up</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<!--this is for the 3rd task(navigation bar)-->
+
+
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+  });
+</script>
+
+
+
+<!--this is for 4th task-->
+
+
+<section class="habit-list-section">
+  <h2>Reorder Your Habits</h2>
+  <ul id="habit-list">
+    <li draggable="true" class="habit-item">Drink Water</li>
+    <li draggable="true" class="habit-item">Morning Walk</li>
+    <li draggable="true" class="habit-item">Read a Book</li>
+    <li draggable="true" class="habit-item">Meditate</li>
+  </ul>
+</section>
+
+
+
+<!--drag and drop options-->
+
+
+
+<script>
+  const list = document.getElementById('habit-list');
+  let draggedItem = null;
+
+  list.addEventListener('dragstart', e => {
+    if (e.target && e.target.classList.contains('habit-item')) {
+      draggedItem = e.target;
+      e.target.classList.add('dragging');
+    }
+  });
+
+  list.addEventListener('dragend', e => {
+    if (draggedItem) {
+      draggedItem.classList.remove('dragging');
+      draggedItem = null;
+    }
+  });
+
+  list.addEventListener('dragover', e => {
+    e.preventDefault();
+    const afterElement = getDragAfterElement(list, e.clientY);
+    if (afterElement == null) {
+      list.appendChild(draggedItem);
+    } else {
+      list.insertBefore(draggedItem, afterElement);
+    }
+  });
+
+  function getDragAfterElement(container, y) {
+    const draggableElements = [...container.querySelectorAll('.habit-item:not(.dragging)')];
+
+    return draggableElements.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset: offset, element: child };
+      } else {
+        return closest;
+      }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+  }
+</script>
