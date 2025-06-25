@@ -19,7 +19,6 @@ Byte Bloom is a habit-tracking web application designed to help users cultivate 
 *CSS 
 *JavaScript 
 
-📜 License
-This project is for learning and demonstration purposes.
+📜This project is for learning and demonstration purposes.
 
 💖 Made with love and pastel colors.
